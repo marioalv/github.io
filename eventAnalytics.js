@@ -14,10 +14,10 @@ var extensionVersion = getURLParameter("extensionVersion");
 var browserName = getURLParameter("browserName");
 var uid = getURLParameter("uid");
 var countryISO = getURLParameter("countryISO");
+var redirectURL = getURLParameter("redirectURL");
 var category = "Acquisition";
 var action = "Uninstall";
 var label = extensionVersion + "-" + browserName;
-var redirectURL = "http://anywhere.ebay.com";
 
 console.log("extensionVersion");
 console.log(extensionVersion);
@@ -27,6 +27,8 @@ console.log("uid");
 console.log(uid);
 console.log("countryISO");
 console.log(countryISO);
+console.log("redirectURL");
+console.log(redirectURL);
 
 _gaq('create', 'UA-18459076-12', {
   cookieExpires: 0
@@ -53,6 +55,10 @@ _gaq('send', 'pageview');
 _gaq('send', 'event', category, action, label, {
     hitCallback: function() {
       console.log("*** Uninstall event sent ***");
-      window.location = redirectURL;
+      if (redirectURL) {
+        window.location = redirectURL;
+      } else {
+        window.location = "http://anywhere.ebay.com/browser/chrome/welcome/";
+      }
     }
 });
