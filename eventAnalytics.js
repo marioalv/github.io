@@ -17,6 +17,7 @@ var countryISO = getURLParameter("countryISO");
 var category = "Acquisition";
 var action = "Uninstall";
 var label = extensionVersion + "-" + browserName;
+var redirectURL = "http://anywhere.ebay.com";
 
 console.log("extensionVersion");
 console.log(extensionVersion);
@@ -51,10 +52,7 @@ _gaq('send', 'pageview');
 // track uninstall event
 _gaq('send', 'event', category, action, label, {
     hitCallback: function() {
-      console.log("SENT");
+      console.log("*** Uninstall event sent ***");
+      window.location = redirectURL;
     }
 });
-
-
-
-
