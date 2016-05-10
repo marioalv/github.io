@@ -1,0 +1,8 @@
+.DS_Store
+*.kpf
+*.crx
+*.komodoproject
+/content/background/core
+/content/ui/view/test
+/signing
+.idea
